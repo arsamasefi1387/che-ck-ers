@@ -12,7 +12,8 @@ This is the "engine" that is being used for this checkers game
 
 ### What if I want to play all of the series? 
 Then you need to just go to the main root or the seperate repository provided
-in order to access the rest of our games
+in order to access the rest of our games:
+- ```https://github.com/arsamasefi1387/checktacinvaders```
 
 ## some basic rules:
 The game is not forced captures which means you are able to not take a piece if
