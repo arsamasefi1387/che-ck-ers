@@ -39,24 +39,24 @@ OVERALL_TIME = pygame.time.set_timer(OVERALL_TIMER_EVENT, 1000)
 
 def main():
     """
-        This is the main function which runs all of the components of the game by 
-        importing and getting different modules.
-        Initializes the game board, timers, and handles all game events including
-        mouse clicks for piece movement, keyboard controls for pause/reset, and 
-        game state updates.
-        Args:
-            None
+    This is the main function which runs all of the components of the game by
+    importing and getting different modules.
+    Initializes the game board, timers, and handles all game events including
+    mouse clicks for piece movement, keyboard controls for pause/reset, and
+    game state updates.
+    Args:
+        None
 
-        Raises:
-            pygame.error: For any Pygame-related errors during game execution
-            SystemExit: When the game is closed
+    Raises:
+        pygame.error: For any Pygame-related errors during game execution
+        SystemExit: When the game is closed
 
-        Returns:
-            None
-        """
+    Returns:
+        None
+    """
     game_timer = GameTimer()
     running = True
-    clock = pygame.time.Clock() # builtin pygame timer helping us
+    clock = pygame.time.Clock()  # builtin pygame timer helping us
     # to count by milliseconds, this is later used in timers.py
     board = Board(SCREEN)
     win_recorded = False  # a flag to check if the win is already recorded
@@ -91,7 +91,6 @@ def main():
 
                     # Handle the click through the board's click handler
                     board.handle_click(row, col)
-         
 
             # add the win whenever someone wins to our database
             if board.status == "game_over" and not win_recorded:
@@ -100,11 +99,10 @@ def main():
                 win_recorded = True
                 print(f"{board.winner} win recorded!")
 
-            
             if event.type == pygame.KEYDOWN:
 
                 # Escape key for pause
-                if event.key == pygame.K_p:  
+                if event.key == pygame.K_p:
                     board.toggle_pause()
                 # Reset the wins scores by key L, only if in a menu
                 if event.key == pygame.K_l and (
@@ -112,7 +110,7 @@ def main():
                 ):
                     stats.reset()
 
-                # Rest with R key 
+                # Rest with R key
                 if event.key == pygame.K_r:
                     board = Board(SCREEN)
                     game_timer = GameTimer()
@@ -129,7 +127,7 @@ def main():
                     running = False
 
         # Clear screen and draw everything
-        SCREEN.fill((0, 0, 0))  # Black background put to be able to 
+        SCREEN.fill((0, 0, 0))  # Black background put to be able to
         # smoothly erased the last frame
 
         board.update_timers()  # this checks if any of the times is over
@@ -139,7 +137,7 @@ def main():
 
         # Draw the side panel with timer and game info
         board.draw_side_panel(SCREEN, FONT, game_timer)
-        #  if the board is paused draw the menu for it 
+        #  if the board is paused draw the menu for it
         if board.paused:
             board.draw_pause_menu(SCREEN, FONT)
 
